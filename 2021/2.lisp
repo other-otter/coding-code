@@ -1020,32 +1020,32 @@ forward 4")
 
 ;;;part-1
 (defun moving ()
-    (let (the-move)
-        (setf the-move (list :x 0 :y 0))
+    (let (the-move-x the-move-y)
+        (setf the-move-x 0 the-move-y 0)
         (loop for i in the-input-list do
             (let (  (the-task (car i))
                     (the-number (cdr i)))
-                (cond   ((equal "forward" the-task) (setf (getf the-move :x) (+ (getf the-move :x) the-number)))
-                        ((equal "up" the-task) (setf (getf the-move :y) (- (getf the-move :y) the-number)))
-                        ((equal "down" the-task) (setf (getf the-move :y) (+ (getf the-move :y) the-number))))))
-        (print (* (getf the-move :x) (getf the-move :y)))))
+                (cond   ((equal "forward" the-task) (setf the-move-x (+ the-move-x the-number)))
+                        ((equal "up" the-task) (setf the-move-y (- the-move-y the-number)))
+                        ((equal "down" the-task) (setf the-move-y (+ the-move-y the-number))))))
+        (print (* the-move-x the-move-y))))
 
 (time (moving))  ;;2070300
-;;277,432 processor cycles
+;;229,604 processor cycles
 
 ;;;part-2
 (defun moving-with-aim ()
-    (let (the-move)
-        (setf the-move (list :a 0 :x 0 :y 0))
+    (let (the-move-a the-move-x the-move-y)
+        (setf the-move-a 0 the-move-x 0 the-move-y 0)
         (loop for i in the-input-list do
             (let (  (the-task (car i))
                     (the-number (cdr i)))
                 (cond   ((equal "forward" the-task) 
-                            (progn  (setf (getf the-move :x) (+ (getf the-move :x) the-number))
-                                    (setf (getf the-move :y) (+ (getf the-move :y) (* (getf the-move :a) the-number)))))
-                        ((equal "up" the-task) (setf (getf the-move :a) (- (getf the-move :a) the-number)))
-                        ((equal "down" the-task) (setf (getf the-move :a) (+ (getf the-move :a) the-number))))))
-        (print (* (getf the-move :x) (getf the-move :y)))))
+                            (progn  (setf the-move-x (+ the-move-x the-number))
+                                    (setf the-move-y (+ the-move-y (* the-move-a the-number)))))
+                        ((equal "up" the-task) (setf the-move-a (- the-move-a the-number)))
+                        ((equal "down" the-task) (setf the-move-a (+ the-move-a the-number))))))
+        (print (* the-move-x the-move-y))))
 
 (time (moving-with-aim))  ;;2078985210
-;;294,964 processor cycles
+;;240,844 processor cycles

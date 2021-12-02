@@ -1,4 +1,8 @@
-;;2021-12-01T15:55:55
+#!/usr/local/bin/sbcl --script
+
+;;2021-12-01T15:55:55ZUTC+8
+
+(load "~/quicklisp/setup.lisp")
 
 (ql:quickload :split-sequence)
 
@@ -2017,12 +2021,11 @@
 
 (defun b (the-list)
     (let* ( (the-boolean-list   (loop for (c d) on the-list by #'cdr collect (a c d)))
-            (the-output-list    (remove-if (lambda (a) (null a)) the-boolean-list))
+            (the-output-list    (remove-if #'null the-boolean-list))
             (the-output-number  (length the-output-list)))
         (print the-output-number)))
 
-(time (b the-number-list))  
-;;1393 
+(time (b the-number-list))  ;;1393 
 ;;201,624 processor cycles
 
 ;;;part-2
@@ -2035,6 +2038,5 @@
   (let ((sum-number-list (loop for (e f g) on the-number-list by #'cdr collect (c e f g))))
     (b sum-number-list)))
 
-(time (d))  
-;;1359 
+(time (d))  ;;1359 
 ;;249,220 processor cycles

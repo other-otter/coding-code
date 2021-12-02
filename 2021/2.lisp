@@ -1018,6 +1018,7 @@ forward 4")
                     (split-sequence:split-sequence #\space a :remove-empty-subseqs t)) 
                 (split-sequence:split-sequence #\newline the-input-string)))))
 
+;;;part-1
 (defun moving ()
     (let (the-move)
         (setf the-move (list :x 0 :y 0))
@@ -1030,7 +1031,9 @@ forward 4")
         (print (* (getf the-move :x) (getf the-move :y)))))
 
 (time (moving))  ;;2070300
+;;277,432 processor cycles
 
+;;;part-2
 (defun moving-with-aim ()
     (let (the-move)
         (setf the-move (list :a 0 :x 0 :y 0))
@@ -1045,3 +1048,4 @@ forward 4")
         (print (* (getf the-move :x) (getf the-move :y)))))
 
 (time (moving-with-aim))  ;;2078985210
+;;294,964 processor cycles

@@ -1038,6 +1038,7 @@
             (print (* g-rate-number e-rate-number)))))
 
 (time (get-rate))  ;;1540244
+;;1,089,644 processor cycles
 
 ;;part-2
 (defun a (b c d)
@@ -1065,3 +1066,4 @@
         (print (* c d))))
 
 (time (b))  ;;4203981
+;;597,972 processor cycles

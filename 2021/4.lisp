@@ -617,7 +617,7 @@
         (loop for (a b c d e f) on (split-sequence:split-sequence #\newline the-board-string) by #'c6r collect (list a b c d e))))
 
 (setf the-game-list (mapcar #'parse-integer (split-sequence:split-sequence #\, the-game-string)))
-
+(setf the-output-list nil)
 
 (defun a (b)
     (let (c)
@@ -641,8 +641,6 @@
                         nil))))
         (when d (apply #'+ d))))
 
-(setf the-output-list nil)
-
 (defun c (d e)
     (let ((f (nth d the-board-list)))
         (if f
@@ -662,8 +660,7 @@
 (defun d ()
     (mapcar (lambda (a) (loop for i from 0 to (1- (length the-game-list)) do (c i a))) the-game-list) 
     (print (car (last the-output-list))) ;;;part-1
-    (print (first the-output-list))      ;;;part-2
-    (print t))
+    (print (first the-output-list)))     ;;;part-2
 
-(time (d))  ;;38594 21184 t 
+(time (d))  ;;38594 ;;21184
 ;;15,625,316 processor cycles

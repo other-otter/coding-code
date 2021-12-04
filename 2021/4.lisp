@@ -665,4 +665,5 @@
     (print (first the-output-list))      ;;part-2
     (print t))
 
-(time (d))
+(time (d)) ;;38594 21184 t 
+;;15,625,316 processor cycles

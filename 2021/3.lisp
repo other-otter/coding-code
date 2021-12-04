@@ -1009,9 +1009,9 @@
 110011100110")
 
 (setf the-input-list (split-sequence:split-sequence #\newline the-input-string))
+(setf rate-map (make-array '(12 12))) 
 
-(setf rate-map (make-array '(12 12))) ;
-
+;;;part-1
 (defun get-rate ()
     (mapcar 
         (lambda (a)
@@ -1040,7 +1040,7 @@
 (time (get-rate))  ;;1540244
 ;;1,089,644 processor cycles
 
-;;part-2
+;;;part-2
 (defun a (b c d)
         (if (<= (length b) 1)
             (car b)

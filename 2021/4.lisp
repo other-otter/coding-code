@@ -661,9 +661,9 @@
 
 (defun d ()
     (mapcar (lambda (a) (loop for i from 0 to (1- (length the-game-list)) do (c i a))) the-game-list) 
-    (print (car (last the-output-list))) ;;part-1
-    (print (first the-output-list))      ;;part-2
+    (print (car (last the-output-list))) ;;;part-1
+    (print (first the-output-list))      ;;;part-2
     (print t))
 
-(time (d)) ;;38594 21184 t 
+(time (d))  ;;38594 21184 t 
 ;;15,625,316 processor cycles

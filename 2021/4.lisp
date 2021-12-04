@@ -629,7 +629,7 @@
                 (if (equal '(t t t t t) d)
                     (setf c t)
                     nil)))
-    c))
+        c))
 
 (defun b (c)
     (let ((d nil))
@@ -639,7 +639,7 @@
                     (if (numberp e)
                         (push e d)
                         nil))))
-                        (when d (apply #'+ d))))
+        (when d (apply #'+ d))))
 
 (setf the-output-list nil)
 

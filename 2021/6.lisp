@@ -22,7 +22,6 @@
         (print (b b c))))
 
 (defun b (c d)
-(gc :full t)
     (if (= d 0)
         (length c)
         (b (c c) (1- d))))

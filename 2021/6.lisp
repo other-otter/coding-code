@@ -34,7 +34,7 @@
         g))
 
 (time (a the-input-list 80))  ;;391888
-;;5,210,989,656 processor cycles
+;;323,303,552 processor cycles
 
 ;;;part-2
 

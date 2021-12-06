@@ -12,5 +12,5 @@
 ;2021-12-04 [2*] ;;https://github.com/other-otter/coding-code/blob/main/2021/4.lisp
 ;2021-12-05 [2*] ;;https://github.com/other-otter/coding-code/blob/main/2021/5.lisp
 ;2021-12-06 [2*] ;;
-;
+;2021-12-07 
 ```

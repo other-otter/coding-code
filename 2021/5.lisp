@@ -564,11 +564,11 @@
 ;;68,099,208 processor cycles
 
 ;;;part-2
-(defun c (b)
-    (let (  (x0 (car b))
-            (y0 (cadr b))
-            (x1 (caddr b))
-            (y1 (cadddr b)))
+(defun c (d)
+    (let (  (x0 (car d))
+            (y0 (cadr d))
+            (x1 (caddr d))
+            (y1 (cadddr d)))
         (cond   ((= x0 x1) 
                     (if (< y0 y1) 
                         (loop for i from y0 to y1 do

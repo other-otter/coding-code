@@ -35,7 +35,7 @@
         g))
 
 (time (a the-input-list 80))  ;;391888
-;;
+;;5,210,989,656 processor cycles
 
 ;;;part-2
 
@@ -63,4 +63,4 @@
          (print (apply #'+ h))))
 
 (time (f 256))  ;;1754597645339
-;;
+;;215,848 processor cycles

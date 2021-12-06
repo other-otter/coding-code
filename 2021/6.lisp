@@ -62,5 +62,5 @@
          (loop for ii from 0 to 8 do (push (aref the-number-menu ii) h))
          (print (apply #'+ h))))
 
-(time (f))  ;;1754597645339
+(time (f 256))  ;;1754597645339
 ;;

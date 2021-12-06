@@ -19,7 +19,7 @@
 (defun a (b c)
     (if (= 8 (car b))
         (b (append '(8) (mapcar #'1- '(2 3 4))) c)
-        (b b c)))
+        (print (b b c))))
 
 (defun b (c d)
 (gc :full t)

@@ -22,7 +22,7 @@
         (print (apply #'min b))))
 
 (time (a))  ;;344138
-;;
+;;124,125,848 processor cycles
  
 ;;;part-2
 (defun b (c d)
@@ -37,4 +37,4 @@
         (print (apply #'min d))))
 
 (time (c)) ;;94862124
-;;
+;;26,649,645,054 processor cycles

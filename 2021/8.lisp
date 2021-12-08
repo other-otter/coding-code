@@ -233,7 +233,7 @@ dabfegc dfegb cbgf cf fdebgc dcbaef gcfed adecg fbdgea fce | cf gbfc fgcb begcad
     (print (apply #'+ (mapcar (lambda (a) (a (cadr a))) the-input-list))))
 
 (time (b))  ;;476
-;;
+;;256,640 processor cycles
 
 ;;;part-2
 (defun c (d)
@@ -289,5 +289,5 @@ dabfegc dfegb cbgf cf fdebgc dcbaef gcfed adecg fbdgea fce | cf gbfc fgcb begcad
 (defun g ()
     (print (apply #'+ (mapcar #'c the-input-list))))
 
-(time (g))  ;;
-;;
+(time (g))  ;;1011823
+;;5,654,508 processor cycle

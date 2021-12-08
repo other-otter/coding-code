@@ -289,6 +289,7 @@ dabfegc dfegb cbgf cf fdebgc dcbaef gcfed adecg fbdgea fce | cf gbfc fgcb begcad
         (if (= k (length i)) 
             (setf (gethash (e j i) j) l) 
             nil)))
+
 (defun h ()
     (print (apply #'+ (mapcar #'c the-input-list))))
 

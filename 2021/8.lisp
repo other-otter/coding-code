@@ -292,4 +292,4 @@ dabfegc dfegb cbgf cf fdebgc dcbaef gcfed adecg fbdgea fce | cf gbfc fgcb begcad
     (print (apply #'+ (mapcar #'c the-input-list))))
 
 (time (h))  ;;1011823
-;;
+;;6,960,824 processor cycles

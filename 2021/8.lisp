@@ -215,6 +215,7 @@ dabfegc dfegb cbgf cf fdebgc dcbaef gcfed adecg fbdgea fce | cf gbfc fgcb begcad
                 (split-string (subseq string (+ pos (length delimiter)))
                     :delimiter delimiter
                     :max (if (= max -1) -1 (- max 1)))))))
+
 (setf the-input-list 
       (let* ((x (split-string the-input-string :delimiter #(#\newline)))
              (y (mapcar (lambda (a) (split-string a :delimiter #(#\space #\| #\space))) x))

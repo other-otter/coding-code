@@ -247,10 +247,7 @@ dabfegc dfegb cbgf cf fdebgc dcbaef gcfed adecg fbdgea fce | cf gbfc fgcb begcad
                 (setf (gethash (char a i) g) (1+ (gethash (char a i) g)))))
             e)
         (setf (gethash (d g 6) h) 2 (gethash (d g 4) h) 5 (gethash (d g 9) h) 6)
-        (loop for i in e do (if (= 2 (length i)) (setf (gethash (e h i) h) 3) nil))
-        (loop for i in e do (if (= 3 (length i)) (setf (gethash (e h i) h) 1) nil))
-        (loop for i in e do (if (= 4 (length i)) (setf (gethash (e h i) h) 4) nil))
-        (loop for i in e do (if (= 7 (length i)) (setf (gethash (e h i) h) 7) nil))
+        (g e h 2 3) (g e h 3 1) (g e h 4 4) (g e h 7 7)
         (parse-integer 
             (with-output-to-string (*standard-output*) 
                 (mapcar 
@@ -286,8 +283,13 @@ dabfegc dfegb cbgf cf fdebgc dcbaef gcfed adecg fbdgea fce | cf gbfc fgcb begcad
             ((equal g '(t   t   t   t   t   t   t   )) 8)
             ((equal g '(t   t   t   t   nil t   t   )) 9)))
 
-(defun g ()
+(defun g (h j k l)
+    (loop for i in h do 
+        (if (= k (length i)) 
+            (setf (gethash (e j i) j) l) 
+            nil)))
+(defun h ()
     (print (apply #'+ (mapcar #'c the-input-list))))
 
-(time (g))  ;;1011823
-;;5,654,508 processor cycle
+(time (h))  ;;1011823
+;;

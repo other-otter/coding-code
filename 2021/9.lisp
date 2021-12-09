@@ -160,8 +160,8 @@
 (defun e ()
     (loop for i from 0 below (array-dimension the-output-array 0) do
         (loop for ii from 0 below (array-dimension the-output-array 1) do
-                (let ((e (b i ii)))
-                    (if e
+                (let ((f (b i ii)))
+                    (if f
                         (setf (aref the-output-array i ii) t)
                         nil)))))
 

@@ -153,7 +153,7 @@
     (print (apply #'+ (mapcar #'1+ (c)))))
 
 (time (d))  ;;444
-;;
+;;11,301,716 processor cycles
 
 ;;;part-2
 (setf the-output-array (make-array '(100 100) :initial-element nil))
@@ -209,4 +209,4 @@
         (print h)))
 
 (time (f))  ;;1168440
-;;
+;;46,528,504 processor cycles

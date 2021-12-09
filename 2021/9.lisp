@@ -114,7 +114,6 @@
 
 (setf the-input-array (make-array '(100 100)))
 
-
 ;;;part-1
 (defun a ()
     (loop for i from 0 below (length the-input-list) do

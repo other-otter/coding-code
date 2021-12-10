@@ -134,7 +134,7 @@
     (print (apply #'+ (remove-if #'null (mapcar #'a the-input-list)))))
 
 (time (b))  ;;369105
-;;
+;;896,928 processor cycles
 
 ;;;part-2
 (setf number-map (make-hash-table))
@@ -174,4 +174,4 @@
         (print (nth (floor (length e) 2) e))))
 
 (time (d)) ;;3999363569
-;;
+;;915,932 processor cycles

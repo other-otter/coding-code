@@ -118,23 +118,34 @@
         char-right-list (list #\) #\] #\} #\>) )
 
 (defun a (b)
-    (let (char-stack)
-        (block k
-            (loop for i from 0 below (length b) do
-                (let ((the-char (char b i)))
-                    (if (member the-char char-left-list)
-                        (push the-char char-stack)
-                        (let (  (the-char-value (gethash the-char char-map))
-                                (stack-char-value (gethash (pop char-stack) char-map)))
-                            (if (= the-char-value stack-char-value)
-                                nil
-                                (return-from k the-char-value)))))))))
+    (let* ( (char-stack nil)
+            (the-error  nil)
+            (block-form (block k 
+                (loop for i from 0 below (length b) do
+                    (let ((the-char (char b i)))
+                        (if (member the-char char-left-list)
+                            (push the-char char-stack)
+                            (let (  (the-char-value (gethash the-char char-map))
+                                    (stack-char-value (gethash (pop char-stack) char-map)))
+                                (if (= the-char-value stack-char-value)
+                                    nil
+                                    (progn 
+                                        (setf the-error t)
+                                        (return-from k the-char-value))))))))))
+        (catch 'the-value (list the-error block-form char-stack))))
 
 (defun b ()
-    (print (apply #'+ (remove-if #'null (mapcar #'a the-input-list)))))
+    (let* ( (c (mapcar  (lambda (a) 
+                            (let ((the-value (catch 'the-value (a a)))) 
+                                (if (car the-value) 
+                                    (cadr the-value) 
+                                    nil))) 
+                        the-input-list))
+            (d (apply #'+ (remove-if #'null c))))
+        (print d)))
 
 (time (b))  ;;369105
-;;896,928 processor cycles
+;;
 
 ;;;part-2
 (setf number-map (make-hash-table))
@@ -150,28 +161,17 @@
         e))
 
 (defun d ()
-    (let ((e (sort 
-                (mapcar 
-                    (lambda (a) (c a 0))
-                    (remove-if #'null 
-                        (mapcar 
-                            (lambda (a) 
-                                (let (char-stack)
-                                    (if (null (block b
-                                            (loop for i from 0 below (length a) do
-                                                    (let ((the-char (char a i)))
-                                                        (if (member the-char char-left-list)
-                                                            (push the-char char-stack)
-                                                            (let (  (the-char-value (gethash the-char char-map))
-                                                                    (stack-char-value (gethash (pop char-stack) char-map)))
-                                                                (if (= the-char-value stack-char-value)
-                                                                    nil
-                                                                    (return-from b the-char-value))))))))
-                                        char-stack 
-                                        nil)))
-                            the-input-list)))
-                #'>)))
-        (print (nth (floor (length e) 2) e))))
+    (let* ( (e  (mapcar (lambda (a) 
+                            (let ((the-value (catch 'the-value (a a)))) 
+                                (if (null (car the-value))
+                                    (caddr the-value)
+                                    nil)))
+                        the-input-list))
+            (f  (mapcar (lambda (a) (c a 0))
+                        (remove-if #'null e)))
+            (g  (sort f #'>))
+            (h  (nth (floor (length g) 2) g)))
+    (print h)))
 
 (time (d)) ;;3999363569
-;;915,932 processor cycles
+;;

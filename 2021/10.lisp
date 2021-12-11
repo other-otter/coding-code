@@ -145,7 +145,7 @@
         (print d)))
 
 (time (b))  ;;369105
-;;
+;;829,864 processor cycles
 
 ;;;part-2
 (setf number-map (make-hash-table))
@@ -174,4 +174,4 @@
     (print h)))
 
 (time (d)) ;;3999363569
-;;
+;;885,948 processor cycles

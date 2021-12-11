@@ -76,7 +76,7 @@
     (print the-blink))
 
 (time (b))  ;;1747
-;;
+;;15,085,828 processor cycles
 
 ;;;part-2
 (defun c ()
@@ -104,4 +104,4 @@
         (print count-number)))
 
 (time (c))  ;;505
-;;
+;;86,432,063 processor cycles

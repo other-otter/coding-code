@@ -132,7 +132,7 @@
                                     (progn 
                                         (setf the-error t)
                                         (return-from k the-char-value))))))))))
-        (catch 'the-value (list the-error block-form char-stack))))
+        (throw 'the-value (list the-error block-form char-stack))))
 
 (defun b ()
     (let* ( (c (mapcar  (lambda (a) 

@@ -132,11 +132,11 @@
                                     (progn 
                                         (setf the-error t)
                                         (return-from k the-char-value))))))))))
-        (throw 'the-value (list the-error block-form char-stack))))
+        (list the-error block-form char-stack)))
 
 (defun b ()
     (let* ( (c (mapcar  (lambda (a) 
-                            (let ((the-value (catch 'the-value (a a)))) 
+                            (let ((the-value (a a)))
                                 (if (car the-value) 
                                     (cadr the-value) 
                                     nil))) 
@@ -145,7 +145,7 @@
         (print d)))
 
 (time (b))  ;;369105
-;;851,916 processor cycles
+;;
 
 ;;;part-2
 (setf number-map (make-hash-table))
@@ -162,7 +162,7 @@
 
 (defun d ()
     (let* ( (e  (mapcar (lambda (a) 
-                            (let ((the-value (catch 'the-value (a a)))) 
+                            (let ((the-value (a a)))
                                 (if (null (car the-value))
                                     (caddr the-value)
                                     nil)))
@@ -174,4 +174,4 @@
     (print h)))
 
 (time (d)) ;;3999363569
-;;903,260 processor cycles
+;;

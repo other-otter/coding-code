@@ -82,8 +82,9 @@
         (print the-count)))
 
 (time (b))  ;;1747
-;;
+;;14,296,072 processor cycles
 
+;;;part-2
 (defun c ()
     (let (  (the-output-list (output-list)) 
             (count-number 0))
@@ -97,11 +98,10 @@
                                         (let ((c (nth x (nth y the-output-list))))
                                             (if (= c 0)
                                                 nil
-                                                (setf l t))))) 
-                                l) 
+                                                (setf l t))))) l) 
                             nil 
                             (return-from k count-number))))) 
         (print count-number)))
 
 (time (c))  ;;505
-;;
+;;74,170,104 processor cycles

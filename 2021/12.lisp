@@ -89,8 +89,8 @@ FP-yi")
     (search-loop)
     (print (length path-list)))
     
-(time (search-start))  ;;
-;;
+(time (search-start))  ;;4378
+;;42,127,240 processor cycles
 
 ;;;part-2
 (defun check-path (the-path the-node)
@@ -139,5 +139,5 @@ FP-yi")
                         the-next)
                     nil)))))
 
-(time (search-start))  ;;
-;;
+(time (search-start))  ;;133621
+;;8,240,211,204 processor cycles

@@ -20,27 +20,34 @@
 2651347271
 7788154252")
 
+(defun output-list ()
+    (mapcar 
+        (lambda (a)
+            (loop for i from 0 below (length a) collect
+                (parse-integer (format nil "~A" (char a i)))))
+        (split-sequence:split-sequence #\newline the-input-string)))
+
 ;;;part-1
-(defun a ()
+(defun a (the-output-list the-count)
     (let (  (the-set nil) 
             (the-boolean nil))
         (labels (   (add-one () 
                         (loop for i from 0 to 99 do
                             (multiple-value-bind (y x) (floor i 10)
-                                (setf   (nth x (nth y the-input-list)) 
-                                        (1+ (nth x (nth y the-input-list)))))))
+                                (setf   (nth x (nth y the-output-list)) 
+                                        (1+ (nth x (nth y the-output-list)))))))
                     (add-zero () 
                         (setf the-boolean nil)
                             (loop for i from 0 to 99 do
                                 (multiple-value-bind (y x) (floor i 10)
-                                    (let ((c (nth x (nth y the-input-list))))
+                                    (let ((c (nth x (nth y the-output-list))))
                                         (if (> c 9)
                                             (progn 
                                                 (setf the-boolean t)
                                                 (push (cons x y) the-set)
-                                                (setf (nth x (nth y the-input-list)) 0)
+                                                (setf (nth x (nth y the-output-list)) 0)
                                                 (add-around x y)
-                                                (setf the-blink (1+ the-blink)))
+                                                (setf the-count (1+ the-count)))
                                             nil))))
                             (if the-boolean 
                                 (add-zero)
@@ -58,43 +65,36 @@
                             (mapcar 
                                 (lambda (a) 
                                     (if (and (<= 0 (car a) 9) (<= 0 (cdr a) 9) (null (member a the-set :test #'equal)))
-                                        (setf (nth (car a) (nth (cdr a) the-input-list)) (1+ (nth (car a) (nth (cdr a) the-input-list))))
+                                        (setf (nth (car a) (nth (cdr a) the-output-list)) (1+ (nth (car a) (nth (cdr a) the-output-list))))
                                         nil))
                                 (list the-q the-w the-e the-a the-d the-z the-x the-c)))))
             (progn  (add-one) 
-                    (add-zero)))))
+                    (add-zero)
+                    (list the-output-list the-count)))))
 
 (defun b ()
-    (setf the-input-list 
-        (mapcar 
-            (lambda (a)
-                (loop for i from 0 below (length a) collect
-                    (parse-integer (format nil "~A" (char a i)))))
-            (split-sequence:split-sequence #\newline the-input-string)))
-    (setf the-blink 0)
-    (loop for i from 1 to 100 do (a))
-    (print the-blink))
+    (let (  (the-output-list (output-list)) 
+            (the-count 0))
+        (loop for i from 1 to 100 do 
+            (let ((the-value (a the-output-list the-count)))
+                (setf   the-output-list (car the-value)
+                        the-count (cadr the-value))))
+        (print the-count)))
 
 (time (b))  ;;1747
-;;15,085,828 processor cycles
+;;
 
-;;;part-2
 (defun c ()
-    (setf the-input-list 
-        (mapcar 
-            (lambda (a)
-                (loop for i from 0 below (length a) collect
-                    (parse-integer (format nil "~A" (char a i)))))
-            (split-sequence:split-sequence #\newline the-input-string)))
-    (let ((count-number 0))
+    (let (  (the-output-list (output-list)) 
+            (count-number 0))
         (block k
             (loop 
-                (progn  (a) 
-                        (setf count-number (1+ count-number))
+                (progn  (setf   the-output-list (car (a the-output-list 0))
+                                count-number (1+ count-number))
                         (if (let (l)
                                 (loop for i from 0 to 99 do
                                     (multiple-value-bind (y x) (floor i 10)
-                                        (let ((c (nth x (nth y the-input-list))))
+                                        (let ((c (nth x (nth y the-output-list))))
                                             (if (= c 0)
                                                 nil
                                                 (setf l t))))) 
@@ -104,4 +104,4 @@
         (print count-number)))
 
 (time (c))  ;;505
-;;86,432,063 processor cycles
+;;

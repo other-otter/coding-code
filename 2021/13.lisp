@@ -993,7 +993,7 @@ fold along y=6")
                     nil)))
         new-array))
 
-(defun when-t (the-array) ;
+(defun when-t (the-array) 
     (let ((the-count 0))
         (loop for i from 0 below (array-dimension the-array 0) do
             (loop for ii from 0 below (array-dimension the-array 1) do

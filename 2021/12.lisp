@@ -94,7 +94,7 @@ FP-yi")
     (print (length path-list)))
     
 (time (search-start))  ;;4378
-;;
+;;46,134,004 processor cycles
 
 ;;;part-2
 (defun incorrect-path (the-path the-node) ;redefine
@@ -129,4 +129,4 @@ FP-yi")
         the-value))
 
 (time (search-start))  ;;133621
-;;
+;;8,186,069,401 processor cycles

@@ -6,6 +6,8 @@
 
 (declaim (optimize (speed 3) (safety 1) (debug 0) (compilation-speed 0)))
 
+(setf sb-impl::*default-external-format* :UTF-8)
+
 (load "~/quicklisp/setup.lisp")
 
 (ql:quickload :split-sequence)

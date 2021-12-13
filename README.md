@@ -18,6 +18,7 @@
 ;2021-12-10 [2*] ;;https://github.com/other-otter/coding-code/blob/main/2021/10.lisp
 ;2021-12-11 [2*] ;;https://github.com/other-otter/coding-code/blob/main/2021/11.lisp
 ;2021-12-12 [2*] ;;https://github.com/other-otter/coding-code/blob/main/2021/12.lisp
-;2021-12-13 [2*] ;;
+;2021-12-13 [2*] ;;https://github.com/other-otter/coding-code/blob/main/2021/13.lisp
 ;2021-12-14 
+;
 ```

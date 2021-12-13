@@ -69,14 +69,14 @@ FP-yi")
                 (if the-next
                     (mapcar 
                         (lambda (a) 
-                            (if (incorrect-path the-path a)
+                            (if (check-path the-path a)
                                 nil
                                 (let ((new-path (append the-path (list a))))
                                     (sb-concurrency:enqueue new-path search-queue))))
                         the-next)
                     nil)))))
 
-(defun incorrect-path (the-path the-node)
+(defun check-path (the-path the-node)
     (and    (gethash the-node lower-case-map) 
             (member the-node the-path :test #'equal)))
 
@@ -97,7 +97,7 @@ FP-yi")
 ;;46,134,004 processor cycles
 
 ;;;part-2
-(defun incorrect-path (the-path the-node) ;redefine
+(defun check-path (the-path the-node) ;redefine
     (let (  (count-map (make-hash-table :test #'equal))
             (the-boolean nil) 
             (the-string nil) 

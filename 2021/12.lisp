@@ -69,13 +69,17 @@ FP-yi")
                 (if the-next
                     (mapcar 
                         (lambda (a) 
-                            (if (and (gethash a lower-case-map) (member a the-path :test #'equal))
+                            (if (incorrect-path the-path a)
                                 nil
                                 (let ((new-path (append the-path (list a))))
                                     (sb-concurrency:enqueue new-path search-queue))))
                         the-next)
                     nil)))))
-                    
+
+(defun incorrect-path (the-path the-node)
+    (and    (gethash the-node lower-case-map) 
+            (member the-node the-path :test #'equal)))
+
 (defun search-loop ()
     (let ((the-path (sb-concurrency:dequeue search-queue)))
         (if the-path
@@ -90,10 +94,10 @@ FP-yi")
     (print (length path-list)))
     
 (time (search-start))  ;;4378
-;;42,127,240 processor cycles
+;;
 
 ;;;part-2
-(defun check-path (the-path the-node)
+(defun incorrect-path (the-path the-node) ;redefine
     (let (  (count-map (make-hash-table :test #'equal))
             (the-boolean nil) 
             (the-string nil) 
@@ -124,20 +128,5 @@ FP-yi")
                     nil)))
         the-value))
 
-(defun search-for (the-path)
-    (let ((the-node (car (last the-path))))
-        (if (equal the-node "end")
-            (push the-path path-list)
-            (let ((the-next (gethash the-node node-map)))
-                (if the-next
-                    (mapcar 
-                        (lambda (a) 
-                            (if (check-path the-path a)
-                                nil
-                                (let ((new-path (append the-path (list a))))
-                                    (sb-concurrency:enqueue new-path search-queue))))
-                        the-next)
-                    nil)))))
-
 (time (search-start))  ;;133621
-;;8,240,211,204 processor cycles
+;;

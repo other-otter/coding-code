@@ -4,6 +4,8 @@
 
 (declaim (sb-ext:muffle-conditions cl:warning))
 
+(declaim (optimize (speed 3) (safety 1) (debug 0) (compilation-speed 0)))
+
 (load "~/quicklisp/setup.lisp")
 
 (ql:quickload :split-sequence)
@@ -1026,7 +1028,7 @@ fold along y=6")
 
 ;;;part-1
 (time (print (when-t (when-action the-input-array (car the-action-list)))))  ;;763
-;;
+;;49,165,260 processor cycles
 
 ;;;part-2
 (time (when-fold)) 
@@ -1036,4 +1038,4 @@ fold along y=6")
 ;;  ⛘⛘⛘⛙⛙⛘⛙⛙⛘⛙⛘⛘⛘⛘⛙⛘⛙⛙⛙⛙⛘⛘⛘⛙⛙⛘⛙⛙⛙⛙⛘⛘⛘⛙⛙⛘⛘⛘⛘⛙ 
 ;;  ⛘⛙⛘⛙⛙⛘⛙⛙⛘⛙⛘⛙⛙⛘⛙⛘⛙⛙⛙⛙⛘⛙⛘⛙⛙⛘⛙⛙⛘⛙⛘⛙⛘⛙⛙⛘⛙⛙⛘⛙ 
 ;;  ⛘⛙⛙⛘⛙⛘⛙⛙⛘⛙⛘⛙⛙⛘⛙⛘⛘⛘⛘⛙⛘⛙⛙⛘⛙⛙⛘⛘⛙⛙⛘⛙⛙⛘⛙⛘⛙⛙⛘⛙ 
-;;
+;;65,082,212 processor cycles

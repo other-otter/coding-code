@@ -1010,7 +1010,7 @@ fold along y=6")
                     (format t "⛙")))
                 (format t "~c~c~c" #\space #\return #\newline)))
 
-(defun when-action (the-array the-action)
+(defun when-a (the-array the-action)
     (let (  (the-fold (car the-action))
             (the-number (cdr the-action)))
         (if (equal the-fold "x")
@@ -1022,15 +1022,19 @@ fold along y=6")
         (mapcar 
             (lambda (a)
                 (setf   the-output-array
-                        (when-action the-output-array a)))
+                        (when-a the-output-array a)))
         the-action-list)
         (print-t the-output-array)))
+
+(defun fold-one ()
+    (let* ((the-fold (when-a the-input-array (car the-action-list))))
+       (print (when-t the-fold))))
 
 (draw-the-map)
 
 ;;;part-1
-(time (print (when-t (when-action the-input-array (car the-action-list)))))  ;;763
-;;49,165,260 processor cycles
+(time (fold-one))  ;;763
+;;50,605,484 processor cycles
 
 ;;;part-2
 (time (when-fold)) 
@@ -1040,4 +1044,4 @@ fold along y=6")
 ;;⛘⛘⛘⛙⛙⛘⛙⛙⛘⛙⛘⛘⛘⛘⛙⛘⛙⛙⛙⛙⛘⛘⛘⛙⛙⛘⛙⛙⛙⛙⛘⛘⛘⛙⛙⛘⛘⛘⛘⛙ 
 ;;⛘⛙⛘⛙⛙⛘⛙⛙⛘⛙⛘⛙⛙⛘⛙⛘⛙⛙⛙⛙⛘⛙⛘⛙⛙⛘⛙⛙⛘⛙⛘⛙⛘⛙⛙⛘⛙⛙⛘⛙ 
 ;;⛘⛙⛙⛘⛙⛘⛙⛙⛘⛙⛘⛙⛙⛘⛙⛘⛘⛘⛘⛙⛘⛙⛙⛘⛙⛙⛘⛘⛙⛙⛘⛙⛙⛘⛙⛘⛙⛙⛘⛙ 
-;;65,082,212 processor cycles
+;;64,654,316 processor cycles

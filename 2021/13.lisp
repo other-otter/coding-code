@@ -1027,7 +1027,7 @@ fold along y=6")
         (print-t the-output-array)))
 
 (defun fold-one ()
-    (let* ((the-fold (when-a the-input-array (car the-action-list))))
+    (let ((the-fold (when-a the-input-array (car the-action-list))))
        (print (when-t the-fold))))
 
 (draw-the-map)

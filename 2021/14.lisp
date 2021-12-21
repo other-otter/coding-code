@@ -218,9 +218,9 @@ PS -> P")
     (map-count (aref the-output-array the-times)))
 
 ;;;part-1
-(add-times 10)  ;;
+(time (add-times 10))  ;;
 ;;
 
 ;;;part-2
-(add-times 40)  ;;
+(time (add-times 40))  ;;
 ;;

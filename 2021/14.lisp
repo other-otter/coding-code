@@ -12,8 +12,9 @@
 
 (ql:quickload :split-sequence)
 
-(setf the-input-string "PHVCVBFHCVPFKBNHKNBO"
-      the-dictionary-string 
+(setf the-input-string "PHVCVBFHCVPFKBNHKNBO")
+
+(setf the-dictionary-string 
 "HK -> F
 VN -> S
 NB -> F
@@ -114,6 +115,16 @@ NK -> V
 BS -> C
 FV -> F
 PS -> P")
+
+(defun split-string (string &key (delimiter (string #\space)) (max -1))
+    (let ((pos (search delimiter string)))
+        (if (or (= max 0) (eq nil pos))
+            (list string)
+            (cons
+                (subseq string 0 pos)
+                (split-string (subseq string (+ pos (length delimiter)))
+                    :delimiter delimiter
+                    :max (if (= max -1) -1 (- max 1)))))))
 
 (setf the-dictionary-list 
     (mapcar 

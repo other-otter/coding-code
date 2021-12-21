@@ -218,9 +218,9 @@ PS -> P")
     (map-count (aref the-output-array the-times)))
 
 ;;;part-1
-(time (add-times 10))  ;;
-;;
+(time (add-times 10))  ;;3555
+;;1,051,312 processor cycles
 
 ;;;part-2
-(time (add-times 40))  ;;
-;;
+(time (add-times 40))  ;;4439442043739
+;;3,506,284 processor cycles
